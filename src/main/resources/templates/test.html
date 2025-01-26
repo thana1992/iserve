@@ -1,0 +1,18 @@
+<html>
+    <body>
+        <#include "header">
+        <p>A: ${a}</p>
+        <p>B: ${b?string('true', 'false')}</p>
+        <p>C: ${c}</p>
+        <p>First: ${msg.first}</p>
+        <table>
+            <#list table as row>
+            <tr>
+                <td>${row.first}</td>
+                <td>${row.second?string('true', 'false')}</td>
+                <td>${row.third}</td>
+            </tr>        
+            </#list>
+        </table>
+    </body>
+</html>

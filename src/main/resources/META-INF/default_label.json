@@ -1,0 +1,26 @@
+[
+	{
+		"language": "EN",
+		"label":[
+			{"name": "recordnotfound", "value": "Record not found" },
+			{"name": "all", "value": "All" },
+			{"name": "active", "value": "Active" },
+			{"name": "inactive", "value": "Inactive" },
+			{"name": "invalid_alert", "value": "Invalid input" },
+			{"name": "trxnotfound", "value": "Transaction not found" },
+			{"name": "notfound", "value": "Not Found" }
+		]
+	},
+	{
+		"language": "TH",
+		"label" : [
+			{"name": "recordnotfound", "value": "ไม่พบรายการ" },
+			{"name": "all", "value": "ทั้งหมด" },
+			{"name": "active", "value": "ใช้งาน" },
+			{"name": "inactive", "value": "ไม่ใช้งาน" },
+			{"name": "invalid_alert", "value": "กรอกข้อมูลไม่ถูกต้อง" },
+			{"name": "trxnotfound", "value": "ไม่พบรายการ" },
+			{"name": "notfound", "value": "ไม่พบข้อมูล" }
+		]
+	}
+]	

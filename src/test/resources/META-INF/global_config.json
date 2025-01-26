@@ -1,0 +1,59 @@
+{
+	"EXCEPT_AUTHORIZE_PATH": "",
+	"SECRET_KEY": "ASSURE_OF_SECRET_KEY",
+	
+	"LANGUAGE_ENCODING": "UTF-8",
+	"RESPONSE_ERROR_CODE": "400",
+	"RESPONSE_ERROR_UNICODE": "true",
+	"CHARACTER_ENCODING": "UTF-8",
+	"PERMISSION_SECTION_HANDLER": "AUTH",
+		
+	"DRIVER": "com.mysql.cj.jdbc.Driver",
+	"URL": "jdbc:mysql://localhost:3306/servedb",
+	"USER": "root",
+	"PASSWORD": "password",
+
+	"API_DRIVER": "#DRIVER",
+	"API_URL": "#URL",
+	"API_USER": "#USER",
+	"API_PASSWORD": "#PASSWORD",
+	
+	"SBA_DRIVER": "#DRIVER",
+	"SBA_URL": "#URL",
+	"SBA_USER": "#USER",
+	"SBA_PASSWORD": "#PASSWORD",
+
+	"TOKEN_DRIVER": "#DRIVER",
+	"TOKEN_URL": "jdbc:mysql://localhost:3306/assuredb",
+	"TOKEN_USER": "#USER",
+	"TOKEN_PASSWORD": "#PASSWORD",
+
+	"PROMPT_DRIVER": "#DRIVER",
+	"PROMPT_URL": "#URL",
+	"PROMPT_USER": "#USER",
+	"PROMPT_PASSWORD": "#PASSWORD",
+
+	"SESSION_DRIVER": "#DRIVER",
+	"SESSION_URL": "#URL",
+	"SESSION_USER": "#USER",
+	"SESSION_PASSWORD": "#PASSWORD",
+
+	"LOGGER_DRIVER": "#DRIVER",
+	"LOGGER_URL": "#URL",
+	"LOGGER_USER": "#USER",
+	"LOGGER_PASSWORD": "#PASSWORD",
+
+	"JSON_MODE": "false",
+	"TIME_MODE": "true",
+	"CONSOLE_MODE": "true",
+	"LOGGER_MODE": "false",
+	"DEBUG_MODE": "true",
+	"WARNING_MODE": "true",
+	"INFO_MODE": "true",
+	"ERROR_MODE": "true",
+	"HEADER_MODE": "false",
+	"ALERT_MESSAGE": "true",
+	"EXCEPTION_MESSAGE": "true",
+
+	"DB_LOCALE": "en_US"
+}

@@ -1,0 +1,11 @@
+[
+	{"code": "1048", "EN": "Input some data is undefined on required field" , "TH": "กรุณากรอกข้อมูลให้ครบถ้วนในช่องที่มีเครื่องหมายดอกจัน" },
+	{"code": "1062", "EN": "Duplicate data entry", "TH": "พบข้อมูลซ้ำในระบบ กรุณาลองใหม่อีกครั้ง" },
+	{"code": "-4008", "EN": "User is undefined", "TH": "ชื่อผู้ใช้ไม่ได้ระบุ" },
+	{"code": "-4009", "EN": "Password is undefined", "TH": "รหัสผ่านไม่ได้ระบุ" },
+	{"code": "-4011", "EN": "Accessor not valid or session expired. Please login again.", "TH": "บัญชีผู้ใช้งานไม่ถูกต้องหรือหมดเวลาใช้งาน  กรุณาเข้าสู่ระบบอีกครั้ง" },
+	{"code": "-4012", "EN": "Accessor conflict", "TH": "บัญชีผู้ใช้งานไม่ถูกต้องตรงกัน" },
+	{"code": "-4013", "EN": "Access token not defined", "TH": "ไม่ได้ระบุรหัสการเข้าใช้ระบบ" },
+	{"code": "-4014", "EN": "Access token not found or expired. Please login again.", "TH": "ไม่พบรหัสการเข้าใช้ระบบหรือหมดเวลาการใช้งาน กรุณาเข้าสู่ระบบอีกครั้ง" },
+	{"code": "-4015", "EN": "Tracking token not found.", "TH": "ไม่ได้ระบุรหัสการติดตามการใช้งานระบบ" }	
+]
