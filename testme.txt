@@ -1,0 +1,54 @@
+
+test pojo (generate java class from table):
+java com/fs/tool/DB2Pojo -d com.mysql.cj.jdbc.Driver -l jdbc:mysql://127.0.0.1:3306/servedb -u root -p root -o D:\workspace -t sampling
+java com/fs/tool/DB2Pojo -ms PROMPT -o D:\workspace -t sampling
+
+test kit (generate pojo, model, handler & service class)
+java com/fs/tool/DB2Kit -d com.mysql.cj.jdbc.Driver -l jdbc:mysql://127.0.0.1:3306/servedb -u root -p root -o D:\workspace -t sampling -service sampling
+java com/fs/tool/DB2Kit -ms PROMPT -o C:\workspace -t jebo -service demo003
+
+default java: error json format
+
+{ 
+ "name":"MoleculerError",
+ "message":"Unknown error occured!",
+ "nodeID":"unknown",
+ "code":500,
+ "type":"NULL_POINTER_EXCEPTION",
+ "retryable":false,
+ "stack":"java.util.concurrent.CompletionException: java.lang.NullPointerException\r\n\tat java.util.concurrent.CompletableFuture.encodeRelay(CompletableFuture.java:326)\r\n\tat java.util.concurrent.CompletableFuture.uniComposeStage(CompletableFuture.java:998)\r\n\tat java.util.concurrent.CompletableFuture.thenCompose(CompletableFuture.java:2137)\r\n\tat io.datatree.Promise.toCompletableFuture(Promise.java:949)\r\n\tat io.datatree.Promise.<init>(Promise.java:365)\r\n\tat io.datatree.Promise.then(Promise.java:428)\r\n\tat services.moleculer.web.router.ActionInvoker.lambda$8(ActionInvoker.java:287)\r\n\tat java.util.concurrent.ForkJoinTask$RunnableExecuteAction.exec(ForkJoinTask.java:1402)\r\n\tat java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:289)\r\n\tat java.util.concurrent.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1067)\r\n\tat java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1703)\r\n\tat java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:172)\r\nCaused by: java.lang.NullPointerException\r\n\tat com.fs.service.config.ConfigService.getCategory(ConfigService.java:117)\r\n\tat com.fs.service.config.ConfigService.get(ConfigService.java:104)\r\n\tat com.fs.api.BaseService.lambda$7(BaseService.java:148)\r\n\tat services.moleculer.service.LocalActionEndpoint.lambda$0(LocalActionEndpoint.java:90)\r\n\tat services.moleculer.service.ActionEndpoint.handler(ActionEndpoint.java:85)\r\n\tat services.moleculer.service.DefaultServiceInvoker.call(DefaultServiceInvoker.java:132)\r\n\tat services.moleculer.service.DefaultServiceInvoker.call(DefaultServiceInvoker.java:123)\r\n\tat services.moleculer.web.router.ActionInvoker.lambda$8(ActionInvoker.java:286)\r\n\t... 5 more",
+ "data":null
+}
+
+Services:
+data table
+curl -X POST http://localhost:8080/iserve/service/api/datatable/get -d "tablename=kt_marrystatus&keyfield=statusid"
+ex. {"head":{"model":"apiGateway","method":"/api/datatable/get","errorcode":"0","errorflag":"N","errordesc":"","result":0},"body":{"resultset":{"records":4,"rows":[{"statusid":"D","nameen":"Divorce","nameth":"หย่า"},{"statusid":"M","nameen":"Married","nameth":"สมรส"},{"statusid":"S","nameen":"Single","nameth":"โสด"},{"statusid":"W","nameen":"Widow","nameth":"หม้าย"}]},"tablename":"kt_marrystatus","category":"kt_marrystatus"}}
+curl -X POST http://localhost:8080/iserve/service/api/datatable/category -d "tablename=kt_marrystatus&keyfield=statusid&valuefield=nameen"
+ex. {"head":{"model":"apiGateway","method":"/api/datatable/category","errorcode":"0","errorflag":"N","errordesc":"","result":0},"body":{"kt_marrystatus":{"D":"Divorce","M":"Married","S":"Single","W":"Widow"}}}
+curl -X POST -H "Content-Type: application/json" http://localhost:8080/iserve/service/api/datatable/list -d "{\"tablename\": [\"kt_marrystatus\", \"kt_languages\"], \"orderfield\": \"seqno\"}"
+ex. {"head":{"model":"apiGateway","method":"/api/datatable/list","errorcode":"0","errorflag":"N","errordesc":"","result":2},"body":[{"resultset":{"records":4,"rows":[{"statusid":"S","nameen":"Single","nameth":"โสด","seqno":1},{"statusid":"M","nameen":"Married","nameth":"สมรส","seqno":2},{"statusid":"D","nameen":"Divorce","nameth":"หย่า","seqno":3},{"statusid":"W","nameen":"Widow","nameth":"หม้าย","seqno":4}]},"tablename":"kt_marrystatus","category":"kt_marrystatus"},{"resultset":{"records":6,"rows":[{"langid":"TH","nameen":"Thai","nameth":"ไทย","seqno":1},{"langid":"EN","nameen":"English","nameth":"อังกฤษ","seqno":2},{"langid":"CN","nameen":"Chinese","nameth":"จีน","seqno":3},{"langid":"JP","nameen":"Japan","nameth":"ญี่ปุ่น","seqno":4},{"langid":"KR","nameen":"Korea","nameth":"เกาหลี","seqno":5},{"langid":"FR","nameen":"French","nameth":"ฝรั่งเศส","seqno":6}]},"tablename":"kt_languages","category":"kt_languages"}]}
+
+data category (setting_config.json)
+curl -X POST http://localhost:8080/iserve/service/api/category/groups -d "names=tklanguage"
+ex. {"head":{"model":"apiGateway","method":"/api/category/groups","errorcode":"0","errorflag":"N","errordesc":"","result":0},"body":{"tklanguage":{"EN":"English","TH":"Thai"}}}
+curl -X POST -H "Content-Type: application/json" http://localhost:8080/iserve/service/api/category/groups -d "{\"names\": [\"tklanguage\", \"tkactive\"] }"
+ex. {"head":{"model":"apiGateway","method":"/api/category/groups","errorcode":"0","errorflag":"N","errordesc":"","result":0},"body":{"tklanguage":{"EN":"English","TH":"Thai"},"tkactive":{"0":"Active","1":"Inactive"}}}
+curl -X POST http://localhost:8080/iserve/service/api/category/lists -d "names=tklanguage"
+ex. {"head":{"model":"apiGateway","method":"/api/category/lists","errorcode":"0","errorflag":"N","errordesc":"","result":1},"body":[{"resultset":{"records":2,"rows":[{"typeid":"EN","nameen":"English","nameth":"อังกฤษ","seqno":1},{"typeid":"TH","nameen":"Thai","nameth":"ไทย","seqno":2}]},"tablename":"tconstant","category":"tklanguage"}]}
+curl -X POST -H "Content-Type: application/json" http://localhost:8080/iserve/service/api/category/lists -d "{\"names\": [\"tklanguage\", \"tkactive\"] }"
+ex. {"head":{"model":"apiGateway","method":"/api/category/lists","errorcode":"0","errorflag":"N","errordesc":"","result":2},"body":[{"resultset":{"records":2,"rows":[{"typeid":"EN","nameen":"English","nameth":"อังกฤษ","seqno":1},{"typeid":"TH","nameen":"Thai","nameth":"ไทย","seqno":2}]},"tablename":"tconstant","category":"tklanguage"},{"resultset":{"records":2,"rows":[{"typeid":"0","nameen":"Active","nameth":"ใช้งาน","seqno":1},{"typeid":"1","nameen":"Inactive","nameth":"ไม่ใช้งาน","seqno":2}]},"tablename":"tconstant","category":"tkactive"}]}
+
+style:
+curl http://localhost:8080/iserve/service/api/style/category
+
+apps:
+curl http://localhost:8080/iserve/service/api/apps/find?programid=sfte001
+curl -X POST http://localhost:8080/iserve/service/api/apps/find -d "programid=sfte001"
+
+test render:
+curl http://localhost:8080/iserve/service/api/render/test
+
+demo002:
+curl http://localhost:8080/iserve/service/api/demo002/collect
+
